@@ -90,7 +90,12 @@ public class FontLoader extends LoaderImpl {
             }
         }
 
-        return fonts.get(fullPath);
+        Font f = fonts.get(fullPath);
+        if (f != null) {
+            return f;
+        } else {
+            return fonts.get(DEFAULT_FONT);
+        }
     }
 
     public String[] getSystemFonts() {
@@ -120,7 +125,7 @@ public class FontLoader extends LoaderImpl {
                 return f;
             }
         }
-        return null;
+        return fonts.get(DEFAULT_FONT);
     }
 }
 
